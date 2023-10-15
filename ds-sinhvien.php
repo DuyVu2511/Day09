@@ -7,13 +7,15 @@
 </head>
 <body>
     <?php
-        $connect = new mysqli('localhost', 'root', '', "QLDiem");
-        $sql = "SELECT * FROM SINHVIEN WHERE 1=1";
-        $resultSet = $connect->query($sql);
+        include("ketnoi_tdv.php");
+        $connect_tdv = new mysqli('localhost', 'root', '', "QLDiem");
+        $sql_tdv = "SELECT * FROM SINHVIEN WHERE 1=1";
+        $result_tdv = $connect_tdv->query($sql_tdv);
     ?>
-    <h1>DANH SACH SINH VIEN</h1>
+    <h1>DANH SACH SINH VIEN - Tran Duy Vu</h1>
     <hr/>
-    <table width="80%" align="center" border="1px">
+    <a href="sinhvien_them_tdv.php">Them moi</a>
+    <table width="100%" align="center" border="1px">
         <thead>
             <tr>
                 <th>STT</th>
@@ -23,27 +25,37 @@
                 <th>Gioitinh</th>
                 <th>Makhoa</th>
                 <th>Anh</th>
+                <th>Chuc nang</th>
             </tr>
         </thead>
         <tbody>
             <?php
-                $stt =0;
-                while($row = $resultSet->fetch_array()){
-                    $stt++;
+                $stt_tdv =0;
+                while($row_tdv = $result_tdv->fetch_array()){
+                    $stt_tdv++;
             ?>
                 <tr>
-                    <td><?php echo $stt; ?></td>
-                    <td><?php echo $row["MaSV"]; ?></td>
-                    <td><?php echo $row["Hoten"]; ?></td>
-                    <td><?php echo $row["Ngaysinh"]; ?></td>
-                    <td><?php echo $row["Gioitinh"]; ?></td> 
-                    <td><?php echo $row["Makhoa"]; ?></td> 
-                    <td><?php echo $row["Anh"]; ?></td> 
+                    <td><?php echo $stt_tdv; ?></td>
+                    <td><?php echo $row_tdv["MaSV_TDV"]; ?></td>
+                    <td><?php echo $row_tdv["Hoten_TDV"]; ?></td>
+                    <td><?php echo $row_tdv["Ngaysinh_TDV"]; ?></td>
+                    <td>
+                        <?php 
+                            echo $row_tdv["Gioitinh_TDV"]==1? 'Nam':'Nu'; 
+                        ?>
+                    </td> 
+                    <td><?php echo $row_tdv["Makhoa_TDV"]; ?></td> 
+                    <td><?php echo $row_tdv["Anh_TDV"]; ?></td> 
+                    <td>
+                        <a href="">Sua</a>
+                        <a href="">Xoa</a>
+                    </td> 
                 </tr>
             <?php
                 }
             ?>
         </tbody>
     </table>
+    <a href="sinhvien_them_tdv.php">Them moi</a>
 </body>
 </html>

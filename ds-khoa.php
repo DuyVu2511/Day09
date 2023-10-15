@@ -7,14 +7,10 @@
 </head>
 <body>
     <?php
-        $connect = new mysqli('localhost', 'root', '', "QLDiem");
-        $sql = "SELECT * FROM KHOA WHERE 1=1";
-        $resultSet = $connect->query($sql);
-        // print_r($resultSet);
-        //4. Duyet va hien thi
-        // while($row = $resultSet->fetch_array()){
-        //     echo "<p>" . $row[0] ." --- " . $row["TENKHOA"];
-        // }
+             include("ketnoi_tdv.php");
+             $connect_tdv = new mysqli('localhost', 'root', '', "QLDiem");
+             $sql_tdv = "SELECT * FROM KHOA WHERE 1=1";
+             $result_tdv = $connect_tdv->query($sql);
     ?>
     <h1>DANH SACH KHOA</h1>
     <hr/>

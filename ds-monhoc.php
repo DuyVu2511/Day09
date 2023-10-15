@@ -7,9 +7,10 @@
 </head>
 <body>
     <?php
-        $connect = new mysqli('localhost', 'root', '', "QLDiem");
-        $sql = "SELECT * FROM MONHOC WHERE 1=1";
-        $resultSet = $connect->query($sql);
+             include("ketnoi_tdv.php");
+             $connect_tdv = new mysqli('localhost', 'root', '', "QLDiem");
+             $sql_tdv = "SELECT * FROM MONHOC WHERE 1=1";
+             $result_tdv = $connect_tdv->query($sql);
     ?>
     <h1>DANH SACH MON HOC</h1>
     <hr/>
